@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	// "log"
 )
 
 func main() {
@@ -39,13 +40,18 @@ func main() {
 	// fmt.Println(reflect.TypeOf(message))
 	// fmt.Println(message, b, c, d, e, f)
 
-	message := sayHello("John", 45)
-	printMessage(message)
+	// message := sayHello("John", 45)
+	// printMessage(message)
 
-	// mess, enter := enterTheClub(15)
-	// fmt.Println(mess, enter)
+	mess, _, err := enterTheClub(15)
+	if err != nil {
+		// log.Fatal(err)
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(mess)
 
-	fmt.Println(enterTheClub(85))
+	// fmt.Println(enterTheClub(85))
 }
 
 func printMessage(message string) {
