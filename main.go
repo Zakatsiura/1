@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -40,6 +41,11 @@ func main() {
 
 	message := sayHello("John", 45)
 	printMessage(message)
+
+	// mess, enter := enterTheClub(15)
+	// fmt.Println(mess, enter)
+
+	fmt.Println(enterTheClub(85))
 }
 
 func printMessage(message string) {
@@ -48,4 +54,20 @@ func printMessage(message string) {
 
 func sayHello(name string, age int) string {
 	return fmt.Sprintf("Hello, %s! You are %d", name, age)
+}
+
+func enterTheClub(age int) (string, bool, error) {
+	if age >= 18 && age < 45 {
+		response := "Yes"
+		return response, true, nil
+	}
+	if age >= 45 && age < 65 {
+		response := "Yes but be carefull"
+		return response, true, nil
+	}
+	if age > 65 {
+		response := "Not for you dude"
+		return response, false,  errors.New("You are too old")
+	}
+	return "No", false,  errors.New("You are too young")
 }
