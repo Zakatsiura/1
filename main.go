@@ -43,15 +43,17 @@ func main() {
 	// message := sayHello("John", 45)
 	// printMessage(message)
 
-	mess, _, err := enterTheClub(15)
-	if err != nil {
-		// log.Fatal(err)
-		fmt.Println(err)
-		return
-	}
-	fmt.Println(mess)
+	// mess, _, err := enterTheClub(15)
+	// if err != nil {
+	// 	// log.Fatal(err)
+	// 	fmt.Println(err)
+	// 	return
+	// }
+	// fmt.Println(mess)
 
 	// fmt.Println(enterTheClub(85))
+
+	fmt.Println(prediction("mon"))
 }
 
 func printMessage(message string) {
@@ -73,7 +75,29 @@ func enterTheClub(age int) (string, bool, error) {
 	}
 	if age > 65 {
 		response := "Not for you dude"
-		return response, false,  errors.New("You are too old")
+		return response, false, errors.New("You are too old")
 	}
-	return "No", false,  errors.New("You are too young")
+	return "No", false, errors.New("You are too young")
 }
+
+func prediction(dayOfWeek string) (string, error) {
+	switch dayOfWeek {
+	case "mon":
+		return "Good M", nil
+	case "tue":
+		return "Good T", nil
+	case "wen":
+		return "Good W", nil
+	case "th":
+		return "Good Th", nil
+	case "fr":
+		return "Good F", nil
+	case "st":
+		return "Good St", nil
+	case "sd":
+		return "Good Sd", nil
+	default:
+		return "Hello", errors.New("wrong day")
+	}
+}
+  
